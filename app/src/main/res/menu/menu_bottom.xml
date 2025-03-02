@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/home"
+        android:title="Home"
+        app:cnb_backgroundColor="@color/blue"
+        app:cnb_iconColor="@color/white" />
+    <item
+        android:id="@+id/maps"
+        android:icon="@drawable/location"
+        android:title="Maps"
+        app:cnb_backgroundColor="@color/blue"
+        app:cnb_iconColor="@color/white" />
+
+    <item
+        android:id="@+id/weather"
+        android:icon="@drawable/rainy"
+        android:title="Weather"
+        app:cnb_backgroundColor="@color/blue"
+        app:cnb_iconColor="@color/white" />
+
+    <item
+        android:id="@+id/camera"
+        android:icon="@drawable/photo"
+        android:title="Camera"
+        app:cnb_backgroundColor="@color/blue"
+        app:cnb_iconColor="@color/white" />
+
+</menu>
