@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
+import com.project.travelcompanionapp.BuildConfig
 import com.project.travelcompanionapp.R
 import com.project.travelcompanionapp.WeatherService
 import com.project.travelcompanionapp.model.ForecastResponse
@@ -27,7 +28,7 @@ import java.util.Locale
 
 class WeatherCardFragment : Fragment() {
 
-    private val apiKey = "fe84af065aa628ec7b51ec7e98c0acaa"
+    private val apiKey =  BuildConfig.WEATHER_API
     private lateinit var weatherService: WeatherService
 
     private lateinit var progressBar: ProgressBar

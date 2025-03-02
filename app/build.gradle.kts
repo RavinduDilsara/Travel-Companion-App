@@ -1,8 +1,11 @@
-  plugins {
+import java.util.Properties
+
+plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     id("com.google.gms.google-services")
+
 }
 
 android {
@@ -17,6 +20,17 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+
+    val localProperties =  Properties()
+    val localPropertiesFile = File(rootDir,"secret.properties")
+    if(localPropertiesFile.exists() && localPropertiesFile.isFile){
+
+        localPropertiesFile.inputStream().use {
+
+            localProperties.load(it)
+        }
     }
 
     buildTypes {
@@ -26,7 +40,12 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField("String","WEATHER_API",localProperties.getProperty("WEATHER_API"))
         }
+        debug {
+            buildConfigField("String","WEATHER_API",localProperties.getProperty("WEATHER_API"))
+        }
+
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -36,7 +55,9 @@ android {
         jvmTarget = "11"
     }
     buildFeatures {
+
         viewBinding = true
+        buildConfig = true
     }
 }
 
