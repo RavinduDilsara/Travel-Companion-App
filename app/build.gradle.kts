@@ -12,16 +12,6 @@ android {
     namespace = "com.project.travelcompanionapp"
     compileSdk = 35
 
-    defaultConfig {
-        applicationId = "com.project.travelcompanionapp"
-        minSdk = 26
-        targetSdk = 35
-        versionCode = 1
-        versionName = "1.0"
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
-    }
 
     val localProperties =  Properties()
     val localPropertiesFile = File(rootDir,"secret.properties")
@@ -32,6 +22,21 @@ android {
             localProperties.load(it)
         }
     }
+    defaultConfig {
+        applicationId = "com.project.travelcompanionapp"
+        minSdk = 26
+        targetSdk = 35
+        versionCode = 1
+        versionName = "1.0"
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String","WEATHER_API",localProperties.getProperty("WEATHER_API"))
+
+
+    }
+
+
 
     buildTypes {
         release {
@@ -40,11 +45,9 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            buildConfigField("String","WEATHER_API",localProperties.getProperty("WEATHER_API"))
+
         }
-        debug {
-            buildConfigField("String","WEATHER_API",localProperties.getProperty("WEATHER_API"))
-        }
+
 
     }
     compileOptions {
