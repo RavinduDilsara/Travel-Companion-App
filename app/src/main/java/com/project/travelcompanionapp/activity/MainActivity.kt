@@ -19,7 +19,7 @@ class MainActivity : BaseActivity() {
                 R.id.home -> HomeFragment()
                 R.id.maps -> WeatherFragment()
                 R.id.weather -> MapsFragment()
-                R.id.camera -> MapsFragment()
+                R.id.camera -> CameraFragment()
                 else -> HomeFragment()
             }
             supportFragmentManager.beginTransaction()
