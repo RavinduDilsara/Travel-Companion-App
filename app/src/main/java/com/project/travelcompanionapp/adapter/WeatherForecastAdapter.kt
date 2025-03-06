@@ -21,7 +21,7 @@ class WeatherForecastAdapter(private var forecastList: List<ForecastItem>) :
         val txtForecastDate: TextView = view.findViewById(R.id.txtForecastDate)
         val forecastIcon: ImageView = view.findViewById(R.id.forecastIcon)
         val txtForecastTemp: TextView = view.findViewById(R.id.txtForecastTemp)
-        val txtForecastRain: TextView = view.findViewById(R.id.txtForecastRain)
+        val txtForecastRain: TextView = view.findViewById(R.id.txtPrecipitation)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ForecastViewHolder {
@@ -39,9 +39,9 @@ class WeatherForecastAdapter(private var forecastList: List<ForecastItem>) :
 
         holder.txtForecastDate.text = date
         holder.txtForecastTemp.text = "${item.main.temp.roundToInt()}°C"
-        holder.txtForecastRain.text = "Rain: ${(item.pop * 100).toInt()}%"
+        holder.txtForecastRain.text = "Precip: ${(item.pop * 100).roundToInt()}%"
 
-        // Load weather icon using Glide
+
         val iconUrl = "https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"
         Glide.with(holder.itemView.context)
             .load(iconUrl)

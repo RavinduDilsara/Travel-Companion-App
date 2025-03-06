@@ -41,8 +41,8 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/txtForecastRain"
-                    android:text="Possibility of rain"
+                    android:id="@+id/txtPrecipitation"
+                    android:text="Precipitation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"

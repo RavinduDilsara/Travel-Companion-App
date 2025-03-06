@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/white_corner_bg"
         app:cardCornerRadius="20dp"
@@ -84,7 +84,7 @@
                 app:cardCornerRadius="10dp"
                 app:cardElevation="2dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/cardChanceOfRain"
+                app:layout_constraintEnd_toStartOf="@id/cardHumidity"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/weatherCondition"
                 app:strokeColor="@color/dark_blue"
@@ -108,7 +108,7 @@
                         android:gravity="center"
                         android:text="Wind"
                         android:textColor="@color/dark_blue"
-                        android:textSize="10sp" />
+                        android:textSize="11sp" />
 
                     <TextView
                         android:id="@+id/textWind"
@@ -125,56 +125,7 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardChanceOfRain"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="2dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/cardHumidity"
-                app:layout_constraintStart_toEndOf="@id/cardWind"
-                app:layout_constraintTop_toBottomOf="@id/weatherCondition"
-                app:strokeColor="@color/dark_blue"
-                app:strokeWidth="1dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="4dp">
-
-                    <ImageView
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
-                        android:src="@drawable/rain" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="Chance of rain"
-                        android:textColor="@color/dark_blue"
-                        android:textSize="10sp" />
-
-                    <TextView
-                        android:id="@+id/textChanceOfRain"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="80%"
-                        android:textColor="@color/dark_blue"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
-
-
-                </LinearLayout>
-
-
-            </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardHumidity"
@@ -186,8 +137,8 @@
                 app:cardCornerRadius="10dp"
                 app:cardElevation="2dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/cardChanceOfRain"
+                app:layout_constraintEnd_toStartOf="@id/cardPrecipitation"
+                app:layout_constraintStart_toEndOf="@id/cardWind"
                 app:layout_constraintTop_toBottomOf="@id/weatherCondition"
                 app:strokeColor="@color/dark_blue"
                 app:strokeWidth="1dp">
@@ -210,13 +161,64 @@
                         android:gravity="center"
                         android:text="Humidity"
                         android:textColor="@color/dark_blue"
-                        android:textSize="10sp" />
+                        android:textSize="11sp" />
 
                     <TextView
                         android:id="@+id/textHumidity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="24%"
+                        android:textColor="@color/dark_blue"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardPrecipitation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="2dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/cardHumidity"
+                app:layout_constraintTop_toBottomOf="@id/weatherCondition"
+                app:strokeColor="@color/dark_blue"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="4dp">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:src="@drawable/rain" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Precipitation"
+                        android:textColor="@color/dark_blue"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/textPrecipitation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="80%"
                         android:textColor="@color/dark_blue"
                         android:textSize="13sp"
                         android:textStyle="bold" />

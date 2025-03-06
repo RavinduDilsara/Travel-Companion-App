@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -54,15 +54,15 @@ class WeatherFragment : Fragment() {
 
 
 
-        viewModel.forecastData.observe(viewLifecycleOwner, Observer { forecastData ->
+        viewModel.forecastData.observe(viewLifecycleOwner) { forecastData ->
             if (forecastData != null) {
                 updateForecastUI(forecastData)
             }
-        })
+        }
 
-        viewModel.errorMessage.observe(viewLifecycleOwner, Observer { errorMessage ->
+        viewModel.errorMessage.observe(viewLifecycleOwner) { errorMessage ->
             Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
-        })
+        }
 
 
         btnSearch.setOnClickListener {
@@ -70,14 +70,17 @@ class WeatherFragment : Fragment() {
             if (cityName.isNotEmpty()) {
 
                 viewModel.fetchWeather(cityName)
+                hideKeyboard()
+                etCity.clearFocus()
             } else {
                 Toast.makeText(requireContext(), "Please enter a city name", Toast.LENGTH_SHORT).show()
             }
-        }
 
+        }
 
         viewModel.fetchWeather("Galle")
     }
+
 
     private fun updateForecastUI(forecastData: ForecastResponse) {
         val dailyForecasts = mutableListOf<ForecastItem>()
@@ -93,5 +96,13 @@ class WeatherFragment : Fragment() {
 
         forecastAdapter.updateData(dailyForecasts)
 
+    }
+
+    private fun hideKeyboard() {
+        val inputMethodManager = requireContext().getSystemService(InputMethodManager::class.java)
+        val view = requireActivity().currentFocus
+        view?.let {
+            inputMethodManager?.hideSoftInputFromWindow(view.windowToken, 0)
+        }
     }
 }

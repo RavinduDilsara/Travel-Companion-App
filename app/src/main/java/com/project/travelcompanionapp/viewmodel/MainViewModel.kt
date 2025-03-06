@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.database.*
 import com.project.travelcompanionapp.BuildConfig
+import com.project.travelcompanionapp.SingleLiveEvent
 import com.project.travelcompanionapp.WeatherService
 import com.project.travelcompanionapp.model.DestinationListModel
 import com.project.travelcompanionapp.model.ForecastResponse
@@ -36,7 +37,7 @@ class MainViewModel : ViewModel() {
     private val _forecastData = MutableLiveData<ForecastResponse>()
     val forecastData: LiveData<ForecastResponse?> = _forecastData
 
-    private val _errorMessage = MutableLiveData<String>()
+    private val _errorMessage = SingleLiveEvent<String>()
     val errorMessage: LiveData<String> get() = _errorMessage
 
     private val _banners = MutableLiveData<List<SliderModel>>()
@@ -69,6 +70,7 @@ class MainViewModel : ViewModel() {
             }
         }
     }
+
 
     private fun updateFilteredDestinations() {
         val query = searchQuery.value.orEmpty()

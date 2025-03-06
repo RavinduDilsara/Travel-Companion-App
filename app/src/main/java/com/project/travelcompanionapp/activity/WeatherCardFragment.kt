@@ -8,14 +8,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.project.travelcompanionapp.R
 import com.project.travelcompanionapp.model.ForecastResponse
 import com.project.travelcompanionapp.model.WeatherApiResponse
 import com.project.travelcompanionapp.viewmodel.MainViewModel
-
 import java.util.Locale
 import kotlin.math.roundToInt
 
@@ -29,7 +27,7 @@ class WeatherCardFragment : Fragment() {
     private lateinit var txtWeatherCondition: TextView
     private lateinit var txtWindSpeed: TextView
     private lateinit var txtHumidity: TextView
-    private lateinit var txtRainProbability: TextView
+    private lateinit var txtPrecipitation: TextView
     private lateinit var weatherIcon: ImageView
 
     override fun onCreateView(
@@ -46,7 +44,7 @@ class WeatherCardFragment : Fragment() {
         txtWeatherCondition = view.findViewById(R.id.weatherCondition)
         txtWindSpeed = view.findViewById(R.id.textWind)
         txtHumidity = view.findViewById(R.id.textHumidity)
-        txtRainProbability = view.findViewById(R.id.textChanceOfRain)
+        txtPrecipitation = view.findViewById(R.id.textPrecipitation)
         weatherIcon = view.findViewById(R.id.weatherIcon)
 
         val cityName = arguments?.getString("city_name") ?: "Galle"
@@ -54,24 +52,25 @@ class WeatherCardFragment : Fragment() {
 
         viewModel.fetchWeather(cityName)
 
-        viewModel.weatherData.observe(viewLifecycleOwner, Observer { weatherData ->
+        viewModel.weatherData.observe(viewLifecycleOwner) { weatherData ->
             weatherData?.let { updateWeatherUI(it) }
-        })
+        }
 
 
-        viewModel.forecastData.observe(viewLifecycleOwner, Observer { forecastData ->
+        viewModel.forecastData.observe(viewLifecycleOwner) { forecastData ->
             forecastData?.let { updateRainProbability(it) }
-        })
+        }
 
 
-        viewModel.errorMessage.observe(viewLifecycleOwner, Observer { errorMessage ->
+        viewModel.errorMessage.observe(viewLifecycleOwner) { errorMessage ->
             Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
-        })
+
+        }
 
         return view
     }
 
-      fun updateWeatherUI(weatherData: WeatherApiResponse) {
+      private fun updateWeatherUI(weatherData: WeatherApiResponse) {
         txtCity.text = weatherData.name
         txtTemperature.text = "${weatherData.main.temp.roundToInt()}°C"
         txtWeatherCondition.text = weatherData.weather[0].description.replaceFirstChar {
@@ -86,6 +85,6 @@ class WeatherCardFragment : Fragment() {
 
     private fun updateRainProbability(forecastData: ForecastResponse) {
         val todayPop = forecastData.list[0].pop
-        txtRainProbability.text = " ${(todayPop * 100).roundToInt()}%"
+        txtPrecipitation.text = " ${(todayPop * 100).roundToInt()}%"
     }
 }
