@@ -1,9 +1,11 @@
 package com.project.travelcompanionapp.activity
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.appcompat.widget.SearchView
@@ -11,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
+import com.project.travelcompanionapp.R
 import com.project.travelcompanionapp.adapter.PopularAdapter
 import com.project.travelcompanionapp.adapter.SearchAdapter
 import com.project.travelcompanionapp.adapter.SliderAdapter
@@ -19,6 +22,19 @@ import com.project.travelcompanionapp.viewmodel.MainViewModel
 import com.project.travelcompanionapp.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
+
+    interface HomeFragmentListener {
+        fun onSeeMoreClicked() // Function to notify MainActivity
+    }
+
+    private var listener: HomeFragmentListener? = null
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is HomeFragmentListener) {
+            listener = context
+        }
+    }
 
     private val viewModel = MainViewModel()
     private var _binding: FragmentHomeBinding? = null
@@ -38,6 +54,10 @@ class HomeFragment : Fragment() {
         initBanner()
         initPopular()
         initSearch()
+
+        view.findViewById<TextView>(R.id.txtSeeMore).setOnClickListener {
+            listener?.onSeeMoreClicked() // Notify MainActivity
+        }
     }
 
     private fun initSearch() {

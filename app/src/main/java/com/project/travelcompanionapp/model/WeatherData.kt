@@ -5,7 +5,7 @@ data class WeatherApiResponse(
     val weather: List<WeatherCondition>,
     val main: MainData,
     val wind: WindData,
-    val clouds: CloudData,
+
 
     )
 
@@ -24,6 +24,3 @@ data class WindData(
 
     )
 
-data class CloudData(
-    val all: Int
-)

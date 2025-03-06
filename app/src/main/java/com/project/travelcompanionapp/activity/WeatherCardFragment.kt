@@ -1,37 +1,29 @@
 package com.project.travelcompanionapp.activity
 
-
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.project.travelcompanionapp.BuildConfig
 import com.project.travelcompanionapp.R
-import com.project.travelcompanionapp.WeatherService
 import com.project.travelcompanionapp.model.ForecastResponse
 import com.project.travelcompanionapp.model.WeatherApiResponse
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import retrofit2.HttpException
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import com.project.travelcompanionapp.viewmodel.MainViewModel
+
 import java.util.Locale
+import kotlin.math.roundToInt
 
 class WeatherCardFragment : Fragment() {
 
-    private val apiKey =  BuildConfig.WEATHER_API
-    private lateinit var weatherService: WeatherService
+    private lateinit var viewModel: MainViewModel
 
-    private lateinit var progressBar: ProgressBar
+    private lateinit var weatherContainer: ViewGroup
     private lateinit var txtCity: TextView
     private lateinit var txtTemperature: TextView
     private lateinit var txtWeatherCondition: TextView
@@ -45,8 +37,10 @@ class WeatherCardFragment : Fragment() {
     ): View {
         val view = inflater.inflate(R.layout.fragment_weather_card, container, false)
 
-        // Initialize UI Elements
-        progressBar = view.findViewById(R.id.progressBarWeather)
+
+        viewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
+
+        weatherContainer = view.findViewById(R.id.cardViewWeather)
         txtCity = view.findViewById(R.id.textCityName)
         txtTemperature = view.findViewById(R.id.temperature)
         txtWeatherCondition = view.findViewById(R.id.weatherCondition)
@@ -55,64 +49,43 @@ class WeatherCardFragment : Fragment() {
         txtRainProbability = view.findViewById(R.id.textChanceOfRain)
         weatherIcon = view.findViewById(R.id.weatherIcon)
 
-        // Initialize Retrofit
-        weatherService = Retrofit.Builder()
-            .baseUrl("https://api.openweathermap.org/data/2.5/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create(WeatherService::class.java)
-
-        // Get city name from arguments (default to "Galle")
         val cityName = arguments?.getString("city_name") ?: "Galle"
 
-        getWeatherData(cityName)
+
+        viewModel.fetchWeather(cityName)
+
+        viewModel.weatherData.observe(viewLifecycleOwner, Observer { weatherData ->
+            weatherData?.let { updateWeatherUI(it) }
+        })
+
+
+        viewModel.forecastData.observe(viewLifecycleOwner, Observer { forecastData ->
+            forecastData?.let { updateRainProbability(it) }
+        })
+
+
+        viewModel.errorMessage.observe(viewLifecycleOwner, Observer { errorMessage ->
+            Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
+        })
 
         return view
     }
 
-    private fun getWeatherData(city: String) {
-        progressBar.visibility = View.VISIBLE
-
-        lifecycleScope.launch(Dispatchers.IO) {
-            try {
-                val weatherData = weatherService.getWeather(city, apiKey)
-                val forecastData = weatherService.getForecast(city, apiKey)
-
-                withContext(Dispatchers.Main) {
-                    updateUI(weatherData,forecastData)
-                    progressBar.visibility = View.GONE
-                }
-            } catch (e: HttpException) {
-                withContext(Dispatchers.Main) {
-                    Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
-                    progressBar.visibility = View.GONE
-                }
-            } catch (e: Exception) {
-                withContext(Dispatchers.Main) {
-                    Toast.makeText(requireContext(), "Failed to fetch weather", Toast.LENGTH_SHORT).show()
-                    progressBar.visibility = View.GONE
-                }
-            }
-        }
-    }
-
-    private fun updateUI(weatherData: WeatherApiResponse, forecastData: ForecastResponse) {
+      fun updateWeatherUI(weatherData: WeatherApiResponse) {
         txtCity.text = weatherData.name
-        txtTemperature.text = "${weatherData.main.temp.toInt()}°C"
+        txtTemperature.text = "${weatherData.main.temp.roundToInt()}°C"
         txtWeatherCondition.text = weatherData.weather[0].description.replaceFirstChar {
-            if (it.isLowerCase()) it.titlecase(
-                Locale.ROOT
-            ) else it.toString()
+            if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString()
         }
-        txtWindSpeed.text = " ${String.format("%d", (weatherData.wind.speed * 3.6).toInt())} km/h"
+        txtWindSpeed.text = " ${String.format("%d", (weatherData.wind.speed * 3.6).roundToInt())} km/h"
         txtHumidity.text = " ${weatherData.main.humidity}%"
-
-        val todayPop = forecastData.list[0].pop
-        txtRainProbability.text = " ${(todayPop * 100).toInt()}%"
 
         val iconUrl = "https://openweathermap.org/img/w/${weatherData.weather[0].icon}.png"
         Glide.with(this).load(iconUrl).into(weatherIcon)
     }
 
-
+    private fun updateRainProbability(forecastData: ForecastResponse) {
+        val todayPop = forecastData.list[0].pop
+        txtRainProbability.text = " ${(todayPop * 100).roundToInt()}%"
+    }
 }
