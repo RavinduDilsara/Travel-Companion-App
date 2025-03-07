@@ -1,0 +1,213 @@
+[
+    {
+        "geometry": {
+            "location": {
+                "lat": 6.927079,
+                "lng": 79.861244
+            },
+            "viewport": {
+                "northeast": {
+                    "lat": 6.928428780291502,
+                    "lng": 79.8625936802915
+                },
+                "southwest": {
+                    "lat": 6.925730819708498,
+                    "lng": 79.8598957197085
+                }
+            }
+        },
+        "name": "Galle Face Green",
+        "rating": 4.6,
+        "vicinity": "Colombo 03, Sri Lanka"
+    },
+    {
+        "geometry": {
+            "location": {
+                "lat": 7.290572,
+                "lng": 80.633726
+            },
+            "viewport": {
+                "northeast": {
+                    "lat": 7.291921780291502,
+                    "lng": 80.63507578029151
+                },
+                "southwest": {
+                    "lat": 7.289223819708497,
+                    "lng": 80.6323778197085
+                }
+            }
+        },
+        "name": "Temple of the Sacred Tooth Relic",
+        "rating": 4.7,
+        "vicinity": "Kandy, Sri Lanka"
+    },
+    {
+        "geometry": {
+            "location": {
+                "lat": 6.053519,
+                "lng": 80.220978
+            },
+            "viewport": {
+                "northeast": {
+                    "lat": 6.054868780291502,
+                    "lng": 80.22232778029151
+                },
+                "southwest": {
+                    "lat": 6.052170819708497,
+                    "lng": 80.2196298197085
+                }
+            }
+        },
+        "name": "Galle Fort",
+        "rating": 4.6,
+        "vicinity": "Galle, Sri Lanka"
+    },
+    {
+        "geometry": {
+            "location": {
+                "lat": 8.3114,
+                "lng": 80.4037
+            },
+            "viewport": {
+                "northeast": {
+                    "lat": 8.312749780291502,
+                    "lng": 80.40504978029151
+                },
+                "southwest": {
+                    "lat": 8.310051819708497,
+                    "lng": 80.4023518197085
+                }
+            }
+        },
+        "name": "Sigiriya Rock Fortress",
+        "rating": 4.8,
+        "vicinity": "Sigiriya, Sri Lanka"
+    },
+    {
+        "geometry": {
+            "location": {
+                "lat": 6.810039,
+                "lng": 79.868333
+            },
+            "viewport": {
+                "northeast": {
+                    "lat": 6.811388780291502,
+                    "lng": 79.8696827802915
+                },
+                "southwest": {
+                    "lat": 6.808690819708497,
+                    "lng": 79.86698481970849
+                }
+            }
+        },
+        "name": "Mount Lavinia Beach",
+        "rating": 4.4,
+        "vicinity": "Dehiwala-Mount Lavinia, Sri Lanka"
+    },
+    {
+        "geometry": {
+            "location": {
+                "lat": 6.934348,
+                "lng": 79.842239
+            },
+            "viewport": {
+                "northeast": {
+                    "lat": 6.935697780291502,
+                    "lng": 79.8435887802915
+                },
+                "southwest": {
+                    "lat": 6.932999819708497,
+                    "lng": 79.8408908197085
+                }
+            }
+        },
+        "name": "Independence Square",
+        "rating": 4.5,
+        "vicinity": "Colombo 07, Sri Lanka"
+    },
+    {
+        "geometry": {
+            "location": {
+                "lat": 7.873054,
+                "lng": 80.771797
+            },
+            "viewport": {
+                "northeast": {
+                    "lat": 7.874403780291502,
+                    "lng": 80.7731467802915
+                },
+                "southwest": {
+                    "lat": 7.871705819708497,
+                    "lng": 80.7704488197085
+                }
+            }
+        },
+        "name": "Anuradhapura Ancient City",
+        "rating": 4.7,
+        "vicinity": "Anuradhapura, Sri Lanka"
+    },
+    {
+        "geometry": {
+            "location": {
+                "lat": 6.869802,
+                "lng": 79.889055
+            },
+            "viewport": {
+                "northeast": {
+                    "lat": 6.871151780291502,
+                    "lng": 79.8904047802915
+                },
+                "southwest": {
+                    "lat": 6.868453819708497,
+                    "lng": 79.88770681970849
+                }
+            }
+        },
+        "name": "Colombo National Museum",
+        "rating": 4.5,
+        "vicinity": "Colombo 07, Sri Lanka"
+    },
+    {
+        "geometry": {
+            "location": {
+                "lat": 6.872543,
+                "lng": 79.861046
+            },
+            "viewport": {
+                "northeast": {
+                    "lat": 6.873892780291502,
+                    "lng": 79.8623957802915
+                },
+                "southwest": {
+                    "lat": 6.871194819708497,
+                    "lng": 79.8596978197085
+                }
+            }
+        },
+        "name": "Viharamahadevi Park",
+        "rating": 4.4,
+        "vicinity": "Colombo 07, Sri Lanka"
+    },
+    {
+        "geometry": {
+            "location": {
+                "lat": 6.049524,
+                "lng": 80.221261
+            },
+            "viewport": {
+                "northeast": {
+                    "lat": 6.050873780291502,
+                    "lng": 80.2226107802915
+                },
+                "southwest": {
+                    "lat": 6.048175819708498,
+                    "lng": 80.2199128197085
+                }
+            }
+        },
+        "name": "Unawatuna Beach",
+        "rating": 4.6,
+        "vicinity": "Unawatuna, Sri Lanka"
+    }
+
+]

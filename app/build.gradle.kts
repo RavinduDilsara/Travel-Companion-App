@@ -32,6 +32,9 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField("String","WEATHER_API",localProperties.getProperty("WEATHER_API"))
+        buildConfigField("String","PLACES_API",localProperties.getProperty("PLACES_API"))
+        buildConfigField("String","GOOGLE_MAPS_API",localProperties.getProperty("GOOGLE_MAPS_API"))
+        resValue("string", "google_maps_key", localProperties.getProperty("GOOGLE_MAPS_API"))
 
 
     }
@@ -92,6 +95,8 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.firebase.database.ktx)
+    implementation(libs.play.services.maps)
+    implementation(libs.play.services.places)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

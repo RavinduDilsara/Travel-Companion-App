@@ -30,6 +30,8 @@ squareupConverterGson = "latest.version"
 viewpager2Version = "1.1.0"
 activity = "1.10.0"
 firebaseDatabaseKtx = "21.0.0"
+playServicesMaps = "19.1.0"
+playServicesPlaces = "17.1.0"
 
 [libraries]
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
@@ -73,6 +75,8 @@ retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "converte
 retrofit-v2110 = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 retrofit-vlatestversion = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofitVersion" }
 squareup-converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "squareupConverterGson" }
+play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "playServicesMaps" }
+play-services-places = { group = "com.google.android.gms", name = "play-services-places", version.ref = "playServicesPlaces" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
