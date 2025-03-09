@@ -70,6 +70,7 @@ android {
 dependencies {
 
 
+    implementation (libs.play.services.location)
     implementation (libs.retrofit)
     implementation (libs.converter.gson.v290)
     implementation (libs.okhttp)
@@ -97,6 +98,7 @@ dependencies {
     implementation(libs.firebase.database.ktx)
     implementation(libs.play.services.maps)
     implementation(libs.play.services.places)
+    implementation(libs.places)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

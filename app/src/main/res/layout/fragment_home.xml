@@ -16,6 +16,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -35,7 +36,9 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+
             <androidx.constraintlayout.widget.ConstraintLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -70,6 +73,7 @@
                     app:layout_constraintTop_toBottomOf="@id/SearchViewField" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -186,8 +190,6 @@
                 android:name="com.project.travelcompanionapp.activity.WeatherCardFragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-
-
 
 
         </LinearLayout>

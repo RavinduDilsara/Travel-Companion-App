@@ -24,7 +24,7 @@ import com.project.travelcompanionapp.databinding.FragmentHomeBinding
 class HomeFragment : Fragment() {
 
     interface HomeFragmentListener {
-        fun onSeeMoreClicked() // Function to notify MainActivity
+        fun onSeeMoreClicked()
     }
 
     private var listener: HomeFragmentListener? = null

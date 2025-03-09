@@ -1,5 +1,6 @@
 package com.project.travelcompanionapp.activity
 
+
 import android.os.Bundle
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
 import com.project.travelcompanionapp.R

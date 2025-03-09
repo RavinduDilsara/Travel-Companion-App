@@ -30,10 +30,10 @@ class SignInActivity : BaseActivity() {
             if (email.isNotEmpty() && pass.isNotEmpty()) {
                 firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
                     if (it.isSuccessful) {
-                        // Start MainActivity after successful login
+
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
-                        finish()  // Finish SignInActivity to prevent going back
+                        finish()
                     } else {
                         Toast.makeText(this, it.exception.toString(), Toast.LENGTH_LONG).show()
                     }
@@ -47,10 +47,10 @@ class SignInActivity : BaseActivity() {
     override fun onStart() {
         super.onStart()
         if (firebaseAuth.currentUser != null) {
-            // If already signed in, go directly to MainActivity
+
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
-            finish()  // Prevent going back to SignInActivity
+            finish()
         }
     }
 }

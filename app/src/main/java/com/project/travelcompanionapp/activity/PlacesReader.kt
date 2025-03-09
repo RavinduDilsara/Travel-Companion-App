@@ -14,7 +14,6 @@ class PlacesReader(private val context: Context) {
 
     private val gson = Gson()
 
-
     private val inputStream: InputStream
         get() = context.resources.openRawResource(R.raw.places)
 
