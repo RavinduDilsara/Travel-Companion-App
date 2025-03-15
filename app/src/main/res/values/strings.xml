@@ -1,10 +1,10 @@
 <resources>
-    <string name="app_name">TravelCompanionApp</string>
+    <string name="app_name">wayFinder</string>
     <string name="google_maps_key">google_maps_key</string>
     <string name="option_get_place">option_get_place</string>
 
     <string-array name="place_types">
-        <item >- Select -</item>
+        <item>- Select -</item>
         <item>Historical Site</item>
         <item>Landmark</item>
         <item>Restaurant</item>

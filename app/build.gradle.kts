@@ -36,9 +36,7 @@ android {
         buildConfigField("String","GOOGLE_MAPS_API",localProperties.getProperty("GOOGLE_MAPS_API"))
         resValue("string", "google_maps_key", localProperties.getProperty("GOOGLE_MAPS_API"))
 
-
     }
-
 
 
     buildTypes {
@@ -67,8 +65,8 @@ android {
     }
 }
 
-dependencies {
 
+dependencies {
 
     implementation (libs.play.services.location)
     implementation (libs.retrofit)

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.HomeFragment">
+    tools:context=".view.fragment.HomeFragment">
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -24,15 +24,26 @@
                 android:layout_marginTop="48dp"
                 android:layout_marginEnd="24dp">
 
+<!--                <TextView-->
+<!--                    android:id="@+id/textView4"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Welcome to wayFinder !!!"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textSize="18sp"-->
+<!--                    android:textColor="@color/dark_blue"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent" />-->
+
                 <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/btnLogOut"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0"
-                    app:srcCompat="@drawable/bell_icon" />
+                    app:srcCompat="@drawable/logout" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -64,7 +75,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:maxHeight="300dp"
-                    android:minHeight="60dp"
                     android:visibility="gone"
                     app:layoutManager="LinearLayoutManager"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -122,7 +132,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView6"
+                    android:id="@+id/txtSeeAll"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="See all"
@@ -187,7 +197,7 @@
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/weatherCardFragment"
-                android:name="com.project.travelcompanionapp.activity.WeatherCardFragment"
+                android:name="com.project.travelcompanionapp.view.fragment.WeatherCardFragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 

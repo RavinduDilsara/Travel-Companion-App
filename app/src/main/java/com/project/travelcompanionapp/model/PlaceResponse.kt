@@ -1,5 +1,4 @@
 package com.project.travelcompanionapp.model
-
 import com.google.android.gms.maps.model.LatLng
 
 data class PlaceResponse(

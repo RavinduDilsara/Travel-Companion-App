@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.WeatherCardFragment">
+    tools:context=".view.fragment.WeatherCardFragment">
 
 
 
@@ -204,7 +204,7 @@
                     <ImageView
                         android:layout_width="22dp"
                         android:layout_height="22dp"
-                        android:src="@drawable/rain" />
+                        android:src="@drawable/precipitation" />
 
                     <TextView
                         android:layout_width="match_parent"

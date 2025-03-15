@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.WeatherFragment"
+    tools:context=".view.fragment.WeatherFragment"
     android:layout_marginTop="70dp">
 
     <EditText
@@ -32,7 +32,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/weatherCardFragment"
-        android:name="com.project.travelcompanionapp.activity.WeatherCardFragment"
+        android:name="com.project.travelcompanionapp.view.fragment.WeatherCardFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

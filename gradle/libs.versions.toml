@@ -9,6 +9,9 @@ converterGson = "2.9.0"
 converterGsonVersion = "2.11.0"
 firebaseBom = "33.8.0"
 glideVersion = "4.16.0"
+hiltAndroid = "2.51.1"
+hiltAndroidCompiler = "2.51.1"
+hiltCompilerVersion = "2.51.1"
 ismaeldivitaChipNavigationBar = "1.3.4"
 kotlin = "2.0.0"
 coreKtx = "1.15.0"
@@ -48,12 +51,15 @@ chip-navigation-bar = { module = "com.ismaeldivita.chipnavigation:chip-navigatio
 chip-navigation-bar-v134 = { module = "com.ismaeldivita.chipnavigation:chip-navigation-bar", version.ref = "ismaeldivitaChipNavigationBar" }
 converter-gson-v2110 = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGsonVersion" }
 converter-gson-v290 = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
+dagger-hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltCompilerVersion" }
 firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
 firebase-auth = { module = "com.google.firebase:firebase-auth" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 firebase-firestore = { module = "com.google.firebase:firebase-firestore" }
 firebase-storage = { module = "com.google.firebase:firebase-storage" }
 github-glide = { module = "com.github.bumptech.glide:glide", version.ref = "glideVersion" }
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
+hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltAndroidCompiler" }
 ismaeldivita-chip-navigation-bar = { module = "com.github.ismaeldivita:chip-navigation-bar", version.ref = "chipNavigationBarVersion" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
