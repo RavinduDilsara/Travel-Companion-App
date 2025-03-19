@@ -37,34 +37,33 @@ class MapsViewModel(private val repository: MapsRepository) : ViewModel() {
     }
 
     fun fetchNearbyPlaces(
-            googleMap: GoogleMap,
-            type: String,
-            placeMarkers: MutableList<Marker>
-        ) {
-            userLocation.value?.let { location ->
-                repository.getNearbyPlaces(
-                    googleMap,
-                    location,
-                    type,
-                    placeMarkers,
-                    onResult = { places ->
-                        _nearbyPlaces.postValue(places)
-                    },
-                    onError = { error ->
-                        _errorMessage.postValue(error)
-                    }
-                )
-            } ?: _errorMessage.postValue("User location not found")
-        }
-
-
-        fun searchForLocation(query: String) {
-            repository.searchLocation(query,
-                onResult = { location -> _searchLocation.postValue(location) },
-                onError = { error -> _errorMessage.postValue(error) }
+        googleMap: GoogleMap,
+        type: String,
+        placeMarkers: MutableList<Marker>
+    ) {
+        userLocation.value?.let { location ->
+            repository.getNearbyPlaces(
+                googleMap,
+                location,
+                type,
+                placeMarkers,
+                onResult = { places ->
+                    _nearbyPlaces.postValue(places)
+                },
+                onError = { error ->
+                    _errorMessage.postValue(error)
+                }
             )
-        }
-
-
+        } ?: _errorMessage.postValue("User location not found")
     }
 
+
+    fun searchForLocation(query: String) {
+        repository.searchLocation(query,
+            onResult = { location -> _searchLocation.postValue(location) },
+            onError = { error -> _errorMessage.postValue(error) }
+        )
+    }
+
+
+}

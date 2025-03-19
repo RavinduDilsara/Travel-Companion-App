@@ -25,10 +25,16 @@ import com.project.travelcompanionapp.view.adapter.SearchAdapter
 import com.project.travelcompanionapp.viewmodel.BannerViewModel
 import com.project.travelcompanionapp.viewmodel.PopularViewModel
 import com.project.travelcompanionapp.viewmodel.SearchViewModel
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
+import kotlinx.coroutines.launch
+import kotlin.math.abs
 
 class HomeFragment : Fragment() {
     interface HomeFragmentListener {
-
         fun onSeeMoreClicked()
     }
 
@@ -74,9 +80,11 @@ class HomeFragment : Fragment() {
             startActivity(intent)
             activity?.finish()
         }
+
         view.findViewById<TextView>(R.id.txtSeeMore).setOnClickListener {
             listener?.onSeeMoreClicked()
         }
+
         view.findViewById<TextView>(R.id.txtSeeAll).setOnClickListener {
             val intent = Intent(requireContext(), DestinationListActivity::class.java)
             startActivity(intent)
@@ -90,7 +98,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun initSearch() {
-
         searchViewModel.filteredDestinations.observe(viewLifecycleOwner) { results ->
             binding.recyclerViewSearchList.layoutManager = LinearLayoutManager(requireContext())
             binding.recyclerViewSearchList.adapter = SearchAdapter(results) { selectedItem ->
@@ -99,9 +106,9 @@ class HomeFragment : Fragment() {
 
                 hideKeyboard()
                 binding.SearchViewField.clearFocus()
-
             }
         }
+
         binding.SearchViewField.setOnQueryTextListener(object :
             androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean = false
@@ -117,7 +124,6 @@ class HomeFragment : Fragment() {
             }
         })
 
-
         binding.SearchViewField.setOnQueryTextFocusChangeListener { _, hasFocus ->
             if (!hasFocus) binding.recyclerViewSearchList.visibility = View.GONE
         }
@@ -129,7 +135,6 @@ class HomeFragment : Fragment() {
                 as android.view.inputmethod.InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(binding.SearchViewField.windowToken, 0)
     }
-
 
     private fun initPopular() {
         binding.progressBarRecommended.visibility = View.VISIBLE
@@ -147,24 +152,49 @@ class HomeFragment : Fragment() {
         bannerViewModel.banners.observe(viewLifecycleOwner) { bannerList ->
             binding.viewPagerSlider.adapter = BannerSliderAdapter(bannerList)
             binding.progressBarBanner.visibility = View.GONE
-
         }
         bannerViewModel.loadBanners()
     }
 
+    @OptIn(DelicateCoroutinesApi::class)
     private fun banners(items: List<BannerSliderModel>) {
-
         binding.viewPagerSlider.adapter = BannerSliderAdapter(items)
         binding.viewPagerSlider.clipToPadding = false
         binding.viewPagerSlider.clipChildren = false
         binding.viewPagerSlider.offscreenPageLimit = 3
         binding.viewPagerSlider.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
 
+
         val compositePageTransformer = CompositePageTransformer().apply {
             addTransformer(MarginPageTransformer(40))
+            addTransformer { page, position ->
+
+                val scaleFactor = 0.85f.coerceAtLeast(1 - abs(position))
+                page.scaleY = scaleFactor
+            }
         }
+
         binding.viewPagerSlider.setPageTransformer(compositePageTransformer)
+
+
+        GlobalScope.launch(Dispatchers.Main) {
+            var currentItem = 0
+            while (isActive) {
+                if (isAdded && _binding != null) {
+
+                    currentItem = if (currentItem < items.size - 1) {
+                        currentItem + 1
+                    } else {
+                        0
+                    }
+
+                    binding.viewPagerSlider.setCurrentItem(currentItem, true)
+                }
+                delay(4000)
+            }
+        }
     }
+
 
 
     override fun onDestroyView() {

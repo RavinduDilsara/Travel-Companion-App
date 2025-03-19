@@ -22,18 +22,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="48dp"
-                android:layout_marginEnd="24dp">
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="10dp">
 
-<!--                <TextView-->
-<!--                    android:id="@+id/textView4"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="Welcome to wayFinder !!!"-->
-<!--                    android:textStyle="bold"-->
-<!--                    android:textSize="18sp"-->
-<!--                    android:textColor="@color/dark_blue"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="parent" />-->
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=" WayFinder "
+                    android:textStyle="bold"
+                    android:textSize="24sp"
+                    android:textColor="@color/Royal_blue"
+                   android:gravity="center"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:id="@+id/btnLogOut"

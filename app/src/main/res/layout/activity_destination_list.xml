@@ -5,7 +5,6 @@
     android:layout_marginTop="55dp"
     android:layout_marginStart="16dp"
     android:layout_marginEnd="16dp"
-    android:layout_marginBottom="24dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
@@ -36,6 +35,9 @@
         android:id="@+id/recyclerViewDestinationList"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        android:paddingBottom="80dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/destinationListBackBtn" />

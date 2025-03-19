@@ -58,7 +58,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         super.onViewCreated(view, savedInstanceState)
 
 
-         placesViewModel = PlacesViewModel(PlacesRepository(requireContext()))
+        placesViewModel = PlacesViewModel(PlacesRepository(requireContext()))
         placesViewModel.loadPlaces()
 
         mapsViewModel = MapsViewModel(MapsRepository(requireContext()))
