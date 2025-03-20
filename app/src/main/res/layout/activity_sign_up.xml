@@ -85,7 +85,7 @@
         android:layout_marginHorizontal="16dp"
         android:background="@color/yellow"
         android:text="Sign Up"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
