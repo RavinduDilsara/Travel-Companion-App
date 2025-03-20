@@ -29,11 +29,15 @@
                     android:id="@+id/textView4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:shadowColor="#808080"
+                    android:shadowDx="4"
+                    android:shadowDy="4"
+                    android:shadowRadius="6"
                     android:text=" WayFinder "
-                    android:textStyle="bold"
-                    android:textSize="24sp"
                     android:textColor="@color/Royal_blue"
-                   android:gravity="center"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
